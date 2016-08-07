@@ -29,7 +29,7 @@
                                     <segment title="Blue"/>
                                 </segments>
                                 <connections>
-                                    <action selector="colorSelected:" destination="BYZ-38-t0r" eventType="valueChanged" id="lyu-QY-rgz"/>
+                                    <action selector="colorSelected:" destination="BYZ-38-t0r" eventType="valueChanged" id="6wN-hq-iNb"/>
                                 </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zJm-d1-gI3">
@@ -40,7 +40,7 @@
                                     <segment title="Blue"/>
                                 </segments>
                                 <connections>
-                                    <action selector="colorSelected:" destination="BYZ-38-t0r" eventType="valueChanged" id="Awu-ro-16a"/>
+                                    <action selector="colorSelected:" destination="BYZ-38-t0r" eventType="valueChanged" id="k0b-Zr-S2D"/>
                                 </connections>
                             </segmentedControl>
                         </subviews>
@@ -55,7 +55,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="paintBucket" destination="nF5-NX-8kc" id="s7T-1e-5na"/>
+                        <outlet property="controller1" destination="rze-HT-6W6" id="Jbj-w2-Ga9"/>
+                        <outlet property="controller2" destination="zJm-d1-gI3" id="hAZ-ug-WzE"/>
+                        <outlet property="paintBucket" destination="nF5-NX-8kc" id="kjL-Pd-0Gg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

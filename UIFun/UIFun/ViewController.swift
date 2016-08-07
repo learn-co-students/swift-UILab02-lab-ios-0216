@@ -12,15 +12,17 @@ class ViewController: UIViewController {
     // TODO: Set up IB outlets
 
     @IBOutlet weak var paintBucket: UIImageView!
+
+    @IBOutlet weak var controller1: UISegmentedControl!
     
-    var firstColor:String = ""
-    var secondColor:String = ""
-
-
+    @IBOutlet weak var controller2: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // TODO: Set the initial paint color to "red"
-        paintBucket.backgroundColor = UIColor.redColor()
+        
+        paintBucket.backgroundColor = controller1.color
+        
     }
 
     func mixColors(withFirst first: String, second: String) -> String {
@@ -29,25 +31,51 @@ class ViewController: UIViewController {
         
         var colorString:String = ""
         
-//        if first == "Red" || second == "Blue" && first == "Blue" || second == "Red" {
-//            colorString = "Purple"
-//        }
-//        if first == "Red" || second == "Yellow" && first == "Yellow" || second == "Red" {
-//            colorString = "Orange"
-//        }
-//        if first == "Blue" || second == "Yellow" && first == "Yellow" || second == "Blue" {
-//            colorString = "Green"
-//        }
+        if first == second {
+            
+            return first.lowercaseString
         
-        switch (first, second) {
-        case ("Red", "Blue"), ("Blue", "Red"):
-            colorString = "Purple"
-        case ("Red", "Yellow"), ("Yellow", "Red"):
-            colorString = "Orange"
-        case ("Yellow", "Blue"), ("Blue", "Yellow"):
-            colorString = "Green"
+        }
+        
+        switch first {
+            
+        case "Red":
+            
+            if second == "Blue" {
+                
+                colorString = "purple"
+                
+            } else if second == "Yellow" {
+            
+                colorString = "orange"
+        }
+        case "Yellow":
+            
+            if second == "Blue" {
+                
+                colorString = "green"
+            
+            } else if second == "Red" {
+                
+                colorString = "orange"
+                
+            }
+            
+        case "Blue":
+            
+            if second == "Red" {
+                
+                colorString = "purple"
+                
+            } else if second == "Yellow" {
+                
+                colorString = "green"
+            
+            }
         default:
-            print("mixed color func was called")
+            
+            colorString = "white"
+        
         }
         
         return colorString
@@ -56,57 +84,13 @@ class ViewController: UIViewController {
     @IBAction func colorSelected(sender: UISegmentedControl) {
         // TODO: Mix each selected color and set the paint color to the mixed color
         
-        var mixedColor = ""
-        
-        if firstColor == "" {
-            
-            firstColor = sender.color.name
-            secondColor = paintBucket.paintColorName
-            
-            mixedColor = mixColors(withFirst: firstColor, second: secondColor)
-            
-            print("\n1st if statement:\n")
-
-            print("firstColor is:\(firstColor)")
-            print("secondColor is:\(secondColor)")
-            print("mixedColor is:\(mixedColor)")
-            
-        }
-        
-        else if paintBucket.paintColorName != sender.color.name {
-            
-            secondColor = firstColor
-            firstColor = sender.color.name
-            mixedColor = mixColors(withFirst: firstColor, second: secondColor)
-            
-            print("\n2nd If Statement called\n")
-
-            print("paintBucket.paintColorName is:\(paintBucket.paintColorName), sender.color.name is:\(sender.color.name)")
-
-            print("first color is: \(firstColor), secondColor is:\(secondColor)")
-            print("mixedcolor is:\(mixedColor)")
-
-        }
-
+        let firstColor = controller1.color.name
+        let secondColor = controller2.color.name
       
-        
+        let mixedColor = mixColors(withFirst: firstColor, second: secondColor)
       
-        switch mixedColor {
-        case "Red":
-            paintBucket.backgroundColor = UIColor.redColor()
-        case "Yellow":
-            paintBucket.backgroundColor = UIColor.yellowColor()
-        case "Blue":
-            paintBucket.backgroundColor = UIColor.blueColor()
-        case "Purple":
-            paintBucket.backgroundColor = UIColor.purpleColor()
-        case "Green":
-            paintBucket.backgroundColor = UIColor.greenColor()
-        case "Orange":
-            paintBucket.backgroundColor = UIColor.orangeColor()
-        default:
-            print("No color selected")
-        }
+       paintBucket.paintColorName = mixedColor
+        
         
     }
     
